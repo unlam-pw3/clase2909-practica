@@ -8,11 +8,11 @@ namespace WebApplication4.Servicios
     {
         private static List<Usuario> _usuarios = new List<Usuario>();
         
-        public bool ValidarUsuario(string nombre, string password) {
-
+        public bool ValidarUsuario(string username, string password)
+        {
             //TODO: validar el nombre y usuario con la colección _usuarios;
-
-            return nombre == "admin" && password == "admin123";
+            return _usuarios.Exists(usuario => usuario.Username == username
+                                            && usuario.Password == password);
         }
 
         public bool ValidarSiExisteElUsuario(Usuario usuario)
