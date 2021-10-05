@@ -4,12 +4,15 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="row">
-    @TempData["Mensaje"]
-</div>
+<h1 class="text-center my-5">Iniciar Sesión</h1>
+
+<p class="text-center">@TempData["Mensaje"]</p>
+
+<h4 class="text-center my-2">@TempData["RegistradoOk"]</h4>
+
 <br />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4 mx-auto">
         <form asp-action="Login">
             <div asp-validation-summary="ModelOnly" class="text-danger">
 
@@ -21,18 +24,18 @@
             </div>
             <div class="form-group">
                 <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
+                <input asp-for="Password" class="form-control" type="password" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Login" class="btn btn-primary" />
             </div>
         </form>
-    </div>
-</div>
 
-<div>
-    <a asp-action="Registrar" asp-controller="Usuarios">No estas registrado?</a>
+        <div>
+            <a asp-action="Registrar" asp-controller="Usuarios">No estas registrado?</a>
+        </div>
+    </div>
 </div>
 
 @section Scripts {

@@ -13,22 +13,32 @@ namespace WebApplication4.Controllers
             return View();
         }
 
+        [HttpPost]
         public IActionResult Registrar(Usuario usuario)
         {
             //TODO: Validar que el estado del model esté ok.
-            if (ModelState.IsValid) {
-
+            if (ModelState.IsValid)
+            {
                 //TODO: Validar si el usuario ya no está registrado
-                if (_servicio.ValidarSiExisteElUsuario(usuario)) {
-
+                if (!_servicio.ValidarSiExisteElUsuario(usuario))
+                {
                     //TODO: Si no está registrado, registrar usuario.
                     _servicio.Registrar(usuario);
 
                     //TODO: Definir hacia donde quiero llevar al usuario a nivel vistas.
+                    TempData["RegistradoOk"] = "Registro exitoso. Ya puedes iniciar sesión.";
+                    return RedirectToAction("Login", "Home");
+                }
+                else
+                {
+                    ViewBag.UsuarioYaExiste = "Error: El E-Mail ya está en uso, intenta nuevamente con otro.";
+                    return View(usuario);
                 }
             }
-
-            return View();
+            else
+            {
+                return View(usuario);
+            }
         }
     }
 }

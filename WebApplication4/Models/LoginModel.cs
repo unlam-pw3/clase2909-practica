@@ -5,7 +5,7 @@ namespace WebApplication4.Models
 {
     public class LoginModel
     {
-        [Required(ErrorMessage ="Nombre obligatorio")]
+        [Required(ErrorMessage ="Nombre de usuario obligatorio")]
         public string Usuario { get; set; }
         [Required(ErrorMessage ="Password obligatorio")]
         public string Password { get; set; }
